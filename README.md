@@ -1,7 +1,7 @@
 # KeypadInterrupt
 ## Arduino Keypad library using interrupts
 
-KeypadInt v1.1, 17/03/2022, Jesus Macias
+KeypadInt v1.2, 19/03/2022, Jesus Macias
 --------------------------------------------------------------------------------
 
 This is an Arduino library that enables you to read a Keypad using interrupts.
@@ -33,15 +33,13 @@ varies between a minimum of about 190ms and a maximum of 380ms and the
 key pressed has no rebounds. Obviously the maximum time can be increased if 
 the key is pressed continously.
 
-To obtain the most recent version of the code or to report issues (or,
-better, 
+To obtain the most recent version of the code or to report issues (or, better, 
 provide fixes), please visit the Github pages at
 
 <https://github.com/toranlo/KeypadInterrupt>.
 
 
 Inquiries via the Github issue tracker, please.  This way, others may benefit
-
 from the answers.
 
 (C) 2022 Jesus Macias
