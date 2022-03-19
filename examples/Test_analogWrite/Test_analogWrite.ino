@@ -1,5 +1,5 @@
 /*
- Test_analogWrite v1.1, 17/03/2022, Jesus Macias
+ Test_analogWrite v1.2, 19/03/2022, Jesus Macias
 --------------------------------------------------------------------------------
 Test to verify that the function AnalogWrite() still works on pins ~3 and ~11 on
 an Arduino Uno (Pines affected by the Timer2 used by the KeypadInt library).
@@ -50,7 +50,10 @@ byte colPins[COLS] = {5, 4, 3, 2}; //connect to the column pinouts of the keypad
                                    //Columns are the output pins.
 
 //initialize an instance of class KeypadInt
-KeypadInt Keypad( (char *)hexaKeys, rowPins, colPins, ROWS, COLS);
+//KEY_PRESSED: Key is generated on press
+//KEY_RELEASED: Key is generated on release (default for compatibility with v1.1)
+KeypadInt Keypad( (char *)hexaKeys, rowPins, colPins, ROWS, COLS, KEY_PRESSED);
+//KeypadInt Keypad( (char *)hexaKeys, rowPins, colPins, ROWS, COLS); // For v1.1
 
 void setup(){
   Serial.begin(9600);
@@ -75,18 +78,22 @@ void loop(){
       Serial.println("STOP");
       break;
     case '3':
+      start=1;
       direcction=1;
       Serial.println("UP");
       break;
     case 'A':
+      start=1;
       direcction=-1;
       Serial.println("DOWN");
       break;
     case '4':
+      start=1;
       speed=10;
       Serial.println("FAST");
       break;
     case '5':
+      start=1;
       speed=30;
       Serial.println("SLOW");
       break;
