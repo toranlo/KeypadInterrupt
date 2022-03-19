@@ -1,5 +1,5 @@
 /*
- KeypadInt v1.1, 17/03/2022, Jesus Macias
+ KeypadInt v1.2, 19/03/2022, Jesus Macias
 --------------------------------------------------------------------------------
 Example of reading a Keypad using interruptions (Timer 2, 2.048ms), so may pass 
 any time between calls to the getKey() function. Up to 10 keys are buffered.
@@ -43,7 +43,10 @@ byte colPins[COLS] = {5, 4, 3, 2}; //connect to the column pinouts of the keypad
                                    //Columns are the output pins.
 
 //initialize an instance of class KeypadInt
-KeypadInt Keypad( (char *)hexaKeys, rowPins, colPins, ROWS, COLS);
+//KEY_PRESSED: Key is generated on press
+//KEY_RELEASED: Key is generated on release (default for compatibility with v1.1)
+KeypadInt Keypad( (char *)hexaKeys, rowPins, colPins, ROWS, COLS, KEY_PRESSED);
+//KeypadInt Keypad( (char *)hexaKeys, rowPins, colPins, ROWS, COLS); // For v1.1
 
 void setup(){
   Serial.begin(9600);
