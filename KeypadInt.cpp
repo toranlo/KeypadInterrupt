@@ -1,5 +1,5 @@
 /*
- KeypadInt v1.1, 17/03/2022, Jesus Macias
+ KeypadInt v1.2, 19/03/2022, Jesus Macias
 --------------------------------------------------------------------------------
 Reads a Keypad using interruptions (Timer 2, 2.048ms), so may pass any time 
 between calls to getKey() function. Up to 10 keys are buffered.
@@ -63,8 +63,8 @@ static byte numloop=0;
 //1 of 25 times there is scan key and the interrupts lasts about 157us. If a key
 //is pressed this time is reduced to about 42us
 
-
-KeypadInt::KeypadInt(char * keys, byte *row, byte *col, byte numRows, byte numCols)
+// event_key=KEY_RELEASED for compatibility with v1.1
+KeypadInt::KeypadInt(char * keys, byte *row, byte *col, byte numRows, byte numCols, byte event_key)
 {
 #ifdef DEBUG
   pinMode(11,OUTPUT);
@@ -77,6 +77,7 @@ KeypadInt::KeypadInt(char * keys, byte *row, byte *col, byte numRows, byte numCo
   COLS=numCols;
   hexaKeys=keys;
   KeypadStartInt();
+  eventKey=event_key;
 }
 
 void KeypadInt::scanKeypad()
@@ -96,6 +97,8 @@ static byte numt=0; //Number of ticks a key is pressed
         {
             numt++;
             row=j;col=i;
+            if (eventKey==KEY_PRESSED)  
+              putKey(hexaKeys[row*ROWS+col]); // Key pressed
             break; //Stop on first key found  
         }
       }
@@ -115,7 +118,8 @@ static byte numt=0; //Number of ticks a key is pressed
       if (a==0) numt=3; //To avoid overflow 
       else 
       {
-        putKey(hexaKeys[row*ROWS+col]);
+        if (eventKey==KEY_RELEASED)
+          putKey(hexaKeys[row*ROWS+col]); // Key released
         numt=0;
       }
     }
@@ -180,6 +184,6 @@ void KeypadInt::putKey(char key)
 byte *KeypadInt::rowPins, *KeypadInt::colPins;
 byte KeypadInt::ROWS, KeypadInt::COLS;
 char *KeypadInt::hexaKeys;
-byte KeypadInt::bufr, KeypadInt::bufw;
+byte KeypadInt::bufr, KeypadInt::bufw, KeypadInt::eventKey;
 volatile byte KeypadInt::numk;
 char KeypadInt::bufk[NUMKEYS];
