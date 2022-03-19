@@ -1,5 +1,5 @@
 /*
- KeypadInt v1.1, 17/03/2022, Jesus Macias
+ KeypadInt v1.2, 19/03/2022, Jesus Macias
 --------------------------------------------------------------------------------
 Reads a Keypad using interruptions (Timer 2, 2.048ms), so may pass any time 
 between calls to getKey() function. Up to 10 keys are buffered.
@@ -34,12 +34,13 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //#define DEBUG //Uncomment to measure interrupt times with an oscilloscope
 
 #define NUMKEYS 10
-
+#define KEY_PRESSED 0
+#define KEY_RELEASED 1
 
 class KeypadInt
 {
   public:
-    KeypadInt(char * keys, byte *row, byte *col, byte numRows, byte numCols);
+    KeypadInt(char * keys, byte *row, byte *col, byte numRows, byte numCols, byte event_key=KEY_RELEASED);
     char getKey();
     static void scanKeypad(); //Called by ISR(TIMER2_OVF_vect)
     
@@ -51,7 +52,7 @@ class KeypadInt
     static byte *rowPins, *colPins;
     static byte ROWS, COLS;
     static char *hexaKeys;
-    static byte bufr,bufw;
+    static byte bufr, bufw, eventKey;
     static volatile byte numk;
     static char bufk[NUMKEYS];
   
