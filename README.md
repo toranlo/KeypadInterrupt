@@ -1,7 +1,7 @@
 # KeypadInterrupt
 ## Arduino Keypad library using interrupts
 
-KeypadInt v1.2, 19/03/2022, Jesus Macias
+KeypadInt v1.2, 19/03/2022, toranlo
 --------------------------------------------------------------------------------
 
 This is an Arduino library that enables you to read a Keypad using interrupts.
@@ -42,7 +42,7 @@ provide fixes), please visit the Github pages at
 Inquiries via the Github issue tracker, please.  This way, others may benefit
 from the answers.
 
-(C) 2022 Jesus Macias
+(C) 2022 toranlo
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by

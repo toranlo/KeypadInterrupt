@@ -1,5 +1,5 @@
 /*
- Test_analogWrite v1.2, 19/03/2022, Jesus Macias
+ Test_analogWrite v1.2, 19/03/2022, toranlo
 --------------------------------------------------------------------------------
 Test to verify that the function AnalogWrite() still works on pins ~3 and ~11 on
 an Arduino Uno (Pines affected by the Timer2 used by the KeypadInt library).
@@ -14,7 +14,7 @@ Connect a LED diode (catode to GND) in series with a 220 Ohm resistor between pi
   '4': Fast
   '5': Slow
 
-(C) 2022 Jesus Macias
+(C) 2022 toranlo
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by

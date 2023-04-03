@@ -1,5 +1,5 @@
 /*
- KeypadInt v1.2, 19/03/2022, Jesus Macias
+ KeypadInt v1.2, 19/03/2022, toranlo
 --------------------------------------------------------------------------------
 Example of reading a Keypad using interruptions (Timer 2, 2.048ms), so may pass 
 any time between calls to the getKey() function. Up to 10 keys are buffered.
@@ -10,7 +10,7 @@ continuously with minimum delay betwen consecutive calls, otherwise keys can be
 lost. With the KeypadInt library the function getKey() does not need to be 
 called continuously.
 
-(C) 2022 Jesus Macias
+(C) 2022 toranlo
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
